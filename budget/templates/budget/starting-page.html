@@ -18,10 +18,12 @@
     <ul>
     {% for expense in expenses %}
         <li>
-            <div> 
+            <div>
+                <a href="{% url "expense-details-page" expense.id %}">
                 {{ expense.title }}
                 {{ expense.amount }}
-                {{ expense.category }}
+                {{ xpense.category }}
+                </a>
             </div>
         </li>
     {% endfor %}

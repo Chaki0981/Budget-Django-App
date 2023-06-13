@@ -42,3 +42,15 @@ class StartingPageView(View):
         self.form_handling(request, budget)
 
         return redirect('starting-page')
+
+class ExpenseDetailsView(View):
+    template_name = 'budget/expense-details.html'
+    def get(self, request, id):
+        expense = Expense.objects.get(pk=id)
+        form = ExpenseForm(instance=expense)
+
+        context = {
+            'form': form,
+        }
+
+        return render(request, self.template_name, context)
