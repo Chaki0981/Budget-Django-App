@@ -4,5 +4,6 @@ from django.views import View
 # Create your views here.
 
 class StartingPageView(View):
+    template_name = 'budget/starting-page.html'
     def get(self, request):
-        pass
+        return render(request, self.template_name)
