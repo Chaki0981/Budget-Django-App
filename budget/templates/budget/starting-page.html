@@ -1,5 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Starting page</h1>
+    <h1>Budget app</h1>
+    <h2>Total budget - {{ budget.total_budget }}</h2>
+    <h2>Total expenses - {{ budget.total_expenses }}</h2>
+    <h2>Available budget - {{ budget.availabe_budget }}</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ income_form }}
+        <button name="form-button" value="income">Save income</button>
+    </form>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ expense_form }}
+        <button name="form-button" value="expense">Save expense</button>
+    </form>
+    <ul>
+    {% for expense in expenses %}
+        <li>
+            <div> 
+                {{ expense.title }}
+                {{ expense.amount }}
+                {{ expense.category }}
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
 {% endblock  %}
