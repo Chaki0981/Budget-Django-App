@@ -7,6 +7,14 @@
     {% block cs_files %}{% endblock  %}
 </head>
 <body>
+    <nav>
+        {% if user.is_authenticated %}
+            <a href="{% url "logout-page" %}">Logout</a>
+        {% else%}
+            <a href="{% url "register-page" %}">Register</a>
+            <a href="{% url "login-page" %}">Login</a>
+        {% endif %}
+    </nav>
     {% block content %}{% endblock  %}
 </body>
 </html>

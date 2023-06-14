@@ -22,10 +22,20 @@
                 <a href="{% url "expense-details-page" expense.id %}">
                 {{ expense.title }}
                 {{ expense.amount }}
-                {{ xpense.category }}
+                {{ expense.category }}
                 </a>
             </div>
         </li>
     {% endfor %}
     </ul>
+    <ul>
+        {% for income in incomes %}
+            <li>
+                <div>
+                    {{ income.title }}
+                    {{ income.amount }}
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
 {% endblock  %}

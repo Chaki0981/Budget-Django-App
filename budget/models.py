@@ -18,7 +18,7 @@ class Income(models.Model):
 
 class Budget(models.Model):
     total_budget = models.DecimalField(max_digits=10, decimal_places=2)
-    availabe_budget = models.DecimalField(max_digits=10, decimal_places=2)
+    available_budget = models.DecimalField(max_digits=10, decimal_places=2)
     total_expenses = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):

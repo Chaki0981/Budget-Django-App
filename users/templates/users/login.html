@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {%endfor %}
+    {% endif %}
+    <form action="{% url "login-page" %}" method="POST">
+        {% csrf_token %}
+        <div>
+            <label>Username</label>
+            <input type="text" name="username">
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" name="password">
+        </div>
+        <button>
+            Login
+        </button>
+    </form>
+{% endblock  %}
