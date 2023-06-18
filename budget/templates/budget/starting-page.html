@@ -2,40 +2,8 @@
 
 {% block content %}
     <h1>Budget app</h1>
+    <h2>Welcome back {{user|title}}</h2>
     <h2>Total budget - {{ budget.total_budget }}</h2>
     <h2>Total expenses - {{ budget.total_expenses }}</h2>
-    <h2>Available budget - {{ budget.availabe_budget }}</h2>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ income_form }}
-        <button name="form-button" value="income">Save income</button>
-    </form>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ expense_form }}
-        <button name="form-button" value="expense">Save expense</button>
-    </form>
-    <ul>
-    {% for expense in expenses %}
-        <li>
-            <div>
-                <a href="{% url "expense-details-page" expense.id %}">
-                {{ expense.title }}
-                {{ expense.amount }}
-                {{ expense.category }}
-                </a>
-            </div>
-        </li>
-    {% endfor %}
-    </ul>
-    <ul>
-        {% for income in incomes %}
-            <li>
-                <div>
-                    {{ income.title }}
-                    {{ income.amount }}
-                </div>
-            </li>
-        {% endfor %}
-        </ul>
-{% endblock  %}
+    <h2>Available budget - {{ budget.available_budget }}</h2>
+{% endblock %}

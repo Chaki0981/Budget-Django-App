@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+
 from .forms import RegistrationUserForm
+from budget.models import Budget
 
 # Create your views here.
 
@@ -25,7 +28,7 @@ class LogoutUserView(View):
     def get(self, request):
         logout(request)
         messages.success(request, ("You were logged out!"))
-        return redirect('starting-page')
+        return redirect('login-page')
     
 class RegisterUserView(View):
     template_name = 'users/register.html'
@@ -43,7 +46,9 @@ class RegisterUserView(View):
 
         if form.is_valid():
             user = form.save()
-            login(user)
+            login(request, user)
+            new_budget = Budget(user=user)
+            new_budget.save()
             messages.success(request, ("Registration successful!"))
             return redirect('starting-page')
         else:
